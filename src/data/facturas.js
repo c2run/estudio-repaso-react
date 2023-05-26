@@ -89,6 +89,29 @@ export const facturas = [
   
   
 export const facturaPorId = (id) => {
-    return facturas.find(i => i.id === id)
+  return facturas.find(i => i.id === id)
 }
+
+export const encontrarFacturaPorId = (id) => {
+  const promesa = new Promise((resolve, reject) => {
+
+      //settimeout simula un delay (espera)
+      //después de 2.5 segundos se ejecuta lo que está dentro del timeout
+      setTimeout(() => {
+          //console.log('realizando alguna tarea con delay ');
+          const result = facturaPorId(id);
+  
+          if(result){
+              resolve(result);
+          }else{
+              reject('error: no existe la factura por el id');
+          }
+  
+          resolve(result);
+      }, 2500);
+  });
+  return promesa;
+}
+
+
 
